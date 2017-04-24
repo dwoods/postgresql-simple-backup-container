@@ -10,8 +10,10 @@ fi
 
 printf '%s' "$dump" | gzip > $BACKUP_DATA_DIR/dump-${DATE}.sql.gz
 
+
 if [ $? -eq 0 ]; then
     echo "backup created: ${DATE}"
+    python  /opt/app-root/src/bin/uploads3.py -a $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -f $BACKUP_DATA_DIR/dump-${DATE}.sql.gz
 else
     echo "backup not successful: ${DATE}"
     exit 1

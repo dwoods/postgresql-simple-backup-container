@@ -14,6 +14,9 @@ RUN yum -y install python \
 # Install dev cron
 RUN pip install -e hg+https://bitbucket.org/dbenamy/devcron#egg=devcron
 
+# Install tinys3
+RUN pip install tinys3
+
 WORKDIR /opt/app-root/src
 
 ADD ./bin ./bin
