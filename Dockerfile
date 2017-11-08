@@ -8,8 +8,8 @@ RUN yum -y install epel-release && yum update -y
 RUN yum -y install python \
     python-devel \
     python-pip \
-    mercurial \
-    yum clean all
+    mercurial \ 
+    && yum clean all
 
 # Install dev cron
 RUN pip install devcron==0.4
