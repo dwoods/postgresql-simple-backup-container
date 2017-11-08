@@ -1,8 +1,6 @@
 # postgresql-simple-backup-container
 Provide a PostgreSQL database backup container that does backups using a cron job. The backup is done by the `pg_dump` tool.
 
-Full backups using `pg_basebackup` are available in the [postgresql-backup-container](https://github.com/appuio/postgresql-backup-container) repository.
-
 ## Different PostgreSQL versions
 Backup for different PostgreSQL database versions are provided:
 * 9.5
@@ -45,7 +43,7 @@ $ oc new-app \
     -e BACKUP_MINUTE=10 \
     -e BACKUP_HOUR=11 \
     -l app=backup \
-    appuio/postgresql-simple-backup-container:9.5
+    dwoods/postgresql-simple-backup-container:9.5
 ```
 
 This will create a container for backups of a PostgreSQL database 9.5. Switch PostgreSQL database version by changing the tag on the last line of the command.
@@ -56,7 +54,7 @@ Before executing the following commands make sure that you are logged into OpenS
 The first command creates the container. The second command configures the container to do backups of your database in a desired schedule.
 
 ```
-$ oc new-app https://github.com/appuio/postgresql-simple-backup-container.git \
+$ oc new-app https://gitlab.viu.ca/web/postgresql-simple-backup.git \
     --strategy=docker \
     --context-dir=Dockerfile_9.5 \
     -l app=backup
