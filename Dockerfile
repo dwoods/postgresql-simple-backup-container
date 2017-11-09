@@ -1,8 +1,6 @@
-FROM centos/postgresql-94-centos7
+FROM centos/postgresql-96-centos7
 
 USER root
-
-ENV BACKUP_DATA_DIR=/tmp BACKUP_KEEP=2 BACKUP_MINUTE=* BACKUP_HOUR=*
 
 RUN yum -y install epel-release && yum update -y
 RUN yum -y install python \
@@ -23,5 +21,7 @@ ADD ./bin ./bin
 RUN chmod -R 777 /opt/app-root/src
 
 USER 1001
+
+ENV BACKUP_DATA_DIR=/tmp BACKUP_KEEP=2 BACKUP_MINUTE=* BACKUP_HOUR=*
 
 CMD ./bin/run.sh
